@@ -20,9 +20,10 @@ channels = 1
 char_path = r'../input/the-simpsons-characters-dataset/simpsons_dataset'
 
 # Creating a character dictionary, sorting it in descending order
-char_dict = {}
-for char in os.listdir(char_path):
-    char_dict[char] = len(os.listdir(os.path.join(char_path,char)))
+char_dict = {
+    char: len(os.listdir(os.path.join(char_path, char)))
+    for char in os.listdir(char_path)
+}
 
 # Sort in descending order
 char_dict = caer.sort_dict(char_dict, descending=True)
@@ -76,7 +77,7 @@ x_train, x_val, y_train, y_val = (np.array(item) for item in split_data)
 # Deleting variables to save memory
 del train
 del featureSet
-del labels 
+del labels
 gc.collect()
 
 # Useful variables when training
